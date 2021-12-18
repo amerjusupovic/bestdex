@@ -1,0 +1,28 @@
+.main {
+    height: 100%;
+    display: flex;
+    color: white;
+}
+
+#root {
+    height: 100%;
+}
+
+.sliding-div {
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+}
+
+.card-image {
+    height: 100%;
+    display: flex;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: center; 
+    background-color: #3F3F3F;
+}

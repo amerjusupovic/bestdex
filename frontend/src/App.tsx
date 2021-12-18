@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { getAllCards, findCardsByQuery } from './Pokemon';
+import './App.scss';
+import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 
 function App() {
+  const [cards, setCards] = useState([] as any);
+
+  useEffect(() => {
+    async function getData() {
+      //const data = await findCardById('xy7-54');
+      const data = await findCardsByQuery("set", "swsh8");
+      data.sort(() => (Math.random() > .5) ? 1 : -1)
+      setCards(data);
+    }
+    getData();
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <div className="sliding-div">
+        {cards.map((card: PokemonTCG.Card) => <img className="card-image" src = {card.images.large}/>)}
+      </div>
     </div>
   );
 }
