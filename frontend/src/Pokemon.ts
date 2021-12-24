@@ -1,6 +1,8 @@
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript'
 import React from 'react'
 import path from 'path';
+const dotenv = require('dotenv');
+dotenv.config();
 
 async function findCardById(id: string){
     let data = {} as any;
@@ -12,8 +14,7 @@ async function findCardById(id: string){
 }
 
 async function findCardsByQuery(type: string, query: string) {
-    const paramsV2: PokemonTCG.Parameter = { q: type + ":" + query };
-
+    const paramsV2: PokemonTCG.Parameter = { q: type + ':' + query };
     let data: PokemonTCG.Card[] = await PokemonTCG.findCardsByQueries(paramsV2)
     .then((cards: PokemonTCG.Card[]) => {
         return cards;
