@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 .main {
     height: 100%;
     display: grid;
@@ -24,7 +26,22 @@
     z-index: 1;
     position: absolute;
     padding-top: 45vh;
-    padding-left: 45vw;
+    padding-left: 22.5vw;
+}
+
+.search-input {
+    width: 55vw;
+    height: 5vh;
+}
+
+.search-input input {
+    width: 85%;
+    height: 100%;
+}
+
+.search-input button {
+    height: 110%;
+    width: 10%;
 }
 
 .card-image {
