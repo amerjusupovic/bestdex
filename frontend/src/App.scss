@@ -1,4 +1,14 @@
 @import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@mixin transform($value){
+    -webkit-transform: ($value);
+        -moz-transform: ($value);
+        -ms-transform: ($value);
+            transform: ($value);
+}
+
+$backgroundcolor: #2c2d33;
 
 .main {
     height: 100%;
@@ -11,11 +21,36 @@
 }
 
 .sliding-div {
-    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-y: hidden;
+    overflow-x: scroll;
     height: 100%;
     display: flex;
     align-items: center;
     grid-area: 1 / 1;
+}
+
+.sliding-div::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.title {
+    grid-area: 1 / 1;
+    justify-content: center;
+    align-items: center;
+    display: inline-grid;
+    z-index: 1;
+    position: absolute;
+    margin-top: 45vh;
+    margin-left: 22.5vw;
+    width: 55vw;
+    font-size: 15vh;
+    font-family: 'Bebas Neue', cursive;
+    white-space: nowrap;
+    //-webkit-text-stroke: 2px black;
+    text-shadow: 4px 4px 10px black;
 }
 
 .search-bar {
@@ -25,18 +60,27 @@
     display: inline-grid;
     z-index: 1;
     position: absolute;
-    padding-top: 45vh;
-    padding-left: 22.5vw;
+    margin-top: 65vh;
+    margin-left: 22.5vw;
 }
 
 .search-input {
     width: 55vw;
-    height: 5vh;
+    height: 10vh;
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.815);
 }
 
 .search-input input {
     width: 85%;
     height: 100%;
+    border-radius: 15px;
+}
+
+.search-input .ant-input {
+    font-size: 3vh;
+    padding-left: 2vw;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .search-input .ant-input-wrapper  {
@@ -51,6 +95,16 @@
 .search-input .ant-input-group-addon {
     height: 110%;
     width: 10%;
+    border-radius: 15px !important;
+}
+
+.search-input svg{
+    font-size: 20px;
+}
+
+.search-input .ant-input-search-button {
+    border-radius: 0px 15px 15px 0px !important;
+    border-color: white;
 }
 
 .card-image {
@@ -59,10 +113,63 @@
     display: flex;
 }
 
+.results-card-image {
+    height: 50vh;
+    padding: 6% 2% 6% 2%;
+    display: flex;
+}
+
+.results-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: 1 / 1;
+}
+
+.results-cards {
+    padding-top: 5vh;
+    justify-content: right;
+    width: 80vw;
+}
+
+.results-grid-item {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
 body {
     width: 100%;
     height: 100%;
     position: absolute;
     text-align: center; 
-    background-color: #3F3F3F;
+    background-color: $backgroundcolor;
+}
+
+$timeshow: 0.05s;
+$timeup: 0.35s;
+.results-card-image:hover {
+    -webkit-animation: scaleUp $timeup  $timeshow ease-out forwards; 
+    -moz-animation:    scaleUp $timeup  $timeshow ease-out forwards; 
+    -o-animation:      scaleUp $timeup  $timeshow ease-out forwards; 
+    animation:         scaleUp $timeup  $timeshow ease-out forwards;  
+}
+
+@keyframes scaleUp {
+    0% {
+        @include transform(scale(1));
+    }
+    100% {
+        @include transform(scale(1.1));
+    }
+}
+
+@-webkit-keyframes scaleUp {
+    0% {
+        @include transform(scale(1));
+    }
+    100% {
+        @include transform(scale(1.1));
+    }
 }

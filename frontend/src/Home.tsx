@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { getAllCards, findCardsByQuery, getOneSet } from './Pokemon';
 import './App.scss';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
@@ -10,7 +10,14 @@ function App() {
   const [cards, setCards] = useState([] as any);
   const [searchQuery, setSearchQuery] = useState("");
   const [params, setParams] = useState({ q: "" })
+  const ref = useRef(null);
 
+  const setRef = useCallback((node) => {
+    if (node) {
+      node.scrollLeft = 20000;  // 700 ~= 1 card
+    }
+    ref.current = node;               
+  },[cards])
 
   useEffect(() => {
     async function getData() {
@@ -48,10 +55,11 @@ function App() {
 
   return (
     <div className="main">
-      <div className="sliding-div">
+      <div ref={setRef} className="sliding-div">
         {cards.map((card: PokemonTCG.Card) => <img className="card-image" src = {card.images.large}/>)}
       </div>
-      <div className="search-bar"><Input.Search className="search-input" placeholder="input search text" onChange={handleSearchInput} onKeyDown={handleSearch}/></div>
+      <div className= "title">Welcome to Bestdex</div>
+      <div className="search-bar"><Input.Search className="search-input" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/></div>
     </div>
   );
 }
