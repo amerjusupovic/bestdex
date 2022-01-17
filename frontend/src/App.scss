@@ -39,7 +39,16 @@
     height: 100%;
 }
 
+.search-input .ant-input-wrapper  {
+    height: 100%;
+}
+
 .search-input button {
+    height: 100%;
+    width: 100%;
+}
+
+.search-input .ant-input-group-addon {
     height: 110%;
     width: 10%;
 }
