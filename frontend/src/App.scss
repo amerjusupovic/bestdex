@@ -1,5 +1,6 @@
 @import '~antd/dist/antd.css';
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@200&display=swap');
 
 @mixin transform($value){
     -webkit-transform: ($value);
@@ -172,4 +173,63 @@ $timeup: 0.35s;
     100% {
         @include transform(scale(1.1));
     }
+}
+
+@keyframes popOut {
+    0% {
+        @include transform(scale());
+    }
+    100% {
+        @include transform(scale(1.1));
+    }
+}
+
+@-webkit-keyframes popOut {
+    0% {
+        @include transform(scale(1));
+    }
+    100% {
+        @include transform(scale(1.1));
+    }
+}
+
+.cardpage-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.cardpage-info {
+    width: 60vw;
+    display: grid;
+    justify-content: center;
+}
+
+.cardpage-name {
+    width: 60vw;
+    font-size: 10vh;
+    font-family: 'Bebas Neue', cursive;
+    white-space: nowrap;
+    color: white;
+}
+
+.cardpage-header {
+    font-size: 5vh;
+    font-family: 'Roboto Slab', serif;
+    white-space: nowrap;
+    color: white;
+    font-weight: 200;
+}
+
+.cardpage-card {
+    height: 80vh;
+}
+
+.cardpage-card:hover {
+    -webkit-animation: scaleUp $timeup  $timeshow ease-out forwards; 
+    -moz-animation:    scaleUp $timeup  $timeshow ease-out forwards; 
+    -o-animation:      scaleUp $timeup  $timeshow ease-out forwards; 
+    animation:         scaleUp $timeup  $timeshow ease-out forwards;  
 }

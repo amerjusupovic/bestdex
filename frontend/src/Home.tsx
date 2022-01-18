@@ -12,19 +12,11 @@ function App() {
   const [params, setParams] = useState({ q: "" })
   const ref = useRef(null);
 
-  const setRef = useCallback((node) => {
-    if (node) {
-      node.scrollLeft = 20000;  // 700 ~= 1 card
-    }
-    ref.current = node;               
-  },[cards])
-
   useEffect(() => {
     async function getData() {
       const data = await findCardsByQuery("name", "Charizard");
       data.sort(() => (Math.random() > .5) ? 1 : -1)
       setCards(data);
-      console.log(data);
     }
     getData();
   }, [])
@@ -42,7 +34,6 @@ function App() {
     getData();
   }, [params]);
 
-
   function handleSearch(e: any) {
     if (!e.key || e.key === "Enter") {
       setParams({...params, q: searchQuery});
@@ -52,6 +43,13 @@ function App() {
   function handleSearchInput(e: any) {
     setSearchQuery(e.target.value)
   }
+
+  const setRef = useCallback((node) => {
+    if (node) {
+      node.scrollLeft = 20000;  // 700 ~= 1 card
+    }
+    ref.current = node;               
+  },[cards])
 
   return (
     <div className="main">
