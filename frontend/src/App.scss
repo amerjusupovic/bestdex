@@ -63,11 +63,29 @@ $backgroundcolor: #2c2d33;
 }
 
 .home-scroll-right-div {
-    z-index: 3;
+    z-index: 2;
     position: absolute;
     left: 95vw;
     top: -4.5vh;
     transform: rotate(270deg) scale(0.6);
+}
+
+.home-mouseover-scroll-left-div {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    height: 15vh;
+    width: 15vw;
+}
+
+.home-mouseover-scroll-right-div {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    height: 15vh;
+    width: 15vw;
 }
 
 .arrow {

@@ -11,7 +11,6 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [params, setParams] = useState({ q: "" })
   const ref = useRef(null);
-  let scrollInterval = null;
 
   useEffect(() => {
     async function getData() {
@@ -52,15 +51,15 @@ function App() {
     ref.current = node;            
   },[cards])
 
-  const mouseHoverScroll = useCallback((node) => {
-    scrollInterval = setInterval(() => {
-      node.scrollBy(10, 0);
-    }, 3);
-    console.log("mouseover");
-  }, [])
+  function mouseHoverUpdate(e: any) {
+    window.scrollBy(10, 0);
+    console.log("yo")
+  }
 
   return (
     <div className="main">
+      <div className="home-mouseover-scroll-left-div" onMouseEnter={mouseHoverUpdate}/>
+      <div className="home-mouseover-scroll-right-div"/>
       <div className="home-scroll-left-div">
         <div className="arrow">
           <span></span>
