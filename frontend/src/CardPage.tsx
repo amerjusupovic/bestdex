@@ -30,12 +30,25 @@ function CardPage(props: any) {
       }
     }, [props])
 
-    return (
+    return (!currentCard.name ? <div>wait a sec</div> :
       <div className="cardpage-main">
         <img className="cardpage-card" src = {currentCard.images.large}/>
         <div className="cardpage-info">
             <div className="cardpage-name">{currentCard.name}</div>
-            <div className="cardpage-header">{currentCard.supertype}</div>
+            <div className="cardpage-header">{currentCard.supertype + " | " + currentCard.subtypes}</div>
+
+            <Grid container justifyContent="center" spacing={2}>
+                <Grid item className="results-grid-item" xs={3}>
+                    <div className="cardpage-description">Market: &nbsp;</div>
+                    <div className="cardpage-normalprice">{"$ " + currentCard.tcgplayer.prices.holofoil.market} &nbsp;</div>
+                    <div className="cardpage-description">Low: &nbsp;</div>
+                    <div className="cardpage-lowprice">{"$ " + currentCard.tcgplayer.prices.holofoil.low} &nbsp;</div>
+                    <div className="cardpage-description">Mid: &nbsp;</div>
+                    <div className="cardpage-midprice">{"$ " + currentCard.tcgplayer.prices.holofoil.mid} &nbsp;</div>
+                    <div className="cardpage-description">High: &nbsp;</div>
+                    <div className="cardpage-highprice">{"$ " + currentCard.tcgplayer.prices.holofoil.high} &nbsp;</div>
+                </Grid>)
+            </Grid>
         </div>
       </div>
     );

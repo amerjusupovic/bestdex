@@ -11,6 +11,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [params, setParams] = useState({ q: "" })
   const ref = useRef(null);
+  let scrollInterval = null;
 
   useEffect(() => {
     async function getData() {
@@ -48,11 +49,32 @@ function App() {
     if (node) {
       node.scrollLeft = 20000;  // 700 ~= 1 card
     }
-    ref.current = node;               
+    ref.current = node;            
   },[cards])
+
+  const mouseHoverScroll = useCallback((node) => {
+    scrollInterval = setInterval(() => {
+      node.scrollBy(10, 0);
+    }, 3);
+    console.log("mouseover");
+  }, [])
 
   return (
     <div className="main">
+      <div className="home-scroll-left-div">
+        <div className="arrow">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div className="home-scroll-right-div">
+        <div className="arrow">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
       <div ref={setRef} className="sliding-div">
         {cards.map((card: PokemonTCG.Card) => <img className="card-image" src = {card.images.large}/>)}
       </div>

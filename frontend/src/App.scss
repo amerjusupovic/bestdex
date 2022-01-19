@@ -54,6 +54,74 @@ $backgroundcolor: #2c2d33;
     text-shadow: 4px 4px 10px black;
 }
 
+.home-scroll-left-div {
+    z-index: 2;
+    position: absolute;
+    left: 2vw;
+    top: -1vh;
+    transform: rotate(90deg) scale(0.6);
+}
+
+.home-scroll-right-div {
+    z-index: 3;
+    position: absolute;
+    left: 95vw;
+    top: -4.5vh;
+    transform: rotate(270deg) scale(0.6);
+}
+
+.arrow {
+    display: inline-grid;
+    transform: translate(-50%,-50%);
+}
+  
+.arrow span{
+    display: block;
+    width: 9vh;
+    height: 9vh;
+    border-bottom: 6px solid white;
+    border-right: 6px solid white;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+
+.arrow span:nth-child(2){
+    animation-delay: -0.2s;
+}
+
+.arrow span:nth-child(3){
+    animation-delay: -0.4s;
+}
+
+@keyframes animate {
+    0%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px,-20px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: rotate(45deg) translate(20px,20px);
+    }
+}
+
+@-webkit-keyframes animate {
+    0%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px,-20px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: rotate(45deg) translate(20px,20px);
+    }
+}
+
 .search-bar {
     grid-area: 1 / 1;
     justify-content: center;
@@ -218,6 +286,15 @@ $timeup: 0.35s;
 .cardpage-header {
     font-size: 5vh;
     font-family: 'Roboto Slab', serif;
+    margin-bottom: 10vh;
+    white-space: nowrap;
+    color: white;
+    font-weight: 200;
+}
+
+.cardpage-description {
+    font-size: 4vh;
+    font-family: 'Roboto Slab', serif;
     white-space: nowrap;
     color: white;
     font-weight: 200;
@@ -227,9 +304,41 @@ $timeup: 0.35s;
     height: 80vh;
 }
 
-.cardpage-card:hover {
-    -webkit-animation: scaleUp $timeup  $timeshow ease-out forwards; 
-    -moz-animation:    scaleUp $timeup  $timeshow ease-out forwards; 
-    -o-animation:      scaleUp $timeup  $timeshow ease-out forwards; 
-    animation:         scaleUp $timeup  $timeshow ease-out forwards;  
+.cardpage-normalprice {
+    font-size: 4vh;
+    font-family: 'Roboto Slab', serif;
+    white-space: nowrap;
+    color: rgb(229, 229, 153);
+    font-weight: 200;
 }
+
+.cardpage-lowprice {
+    font-size: 4vh;
+    font-family: 'Roboto Slab', serif;
+    white-space: nowrap;
+    color: rgb(199, 120, 120);
+    font-weight: 200;
+}
+
+.cardpage-midprice {
+    font-size: 4vh;
+    font-family: 'Roboto Slab', serif;
+    white-space: nowrap;
+    color: rgb(139, 139, 218);
+    font-weight: 200;
+}
+
+.cardpage-highprice {
+    font-size: 4vh;
+    font-family: 'Roboto Slab', serif;
+    white-space: nowrap;
+    color: rgb(133, 194, 133);
+    font-weight: 200;
+}
+
+// .cardpage-card:hover {
+//     -webkit-animation: scaleUp $timeup  $timeshow ease-out forwards; 
+//     -moz-animation:    scaleUp $timeup  $timeshow ease-out forwards; 
+//     -o-animation:      scaleUp $timeup  $timeshow ease-out forwards; 
+//     animation:         scaleUp $timeup  $timeshow ease-out forwards;  
+// }
