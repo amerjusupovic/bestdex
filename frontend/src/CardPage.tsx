@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { findCardById } from './Pokemon';
-import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import './App.scss';
-import { Grid } from "@mui/material";
+import { Grid, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function CardPage(props: any) {
@@ -31,16 +30,19 @@ function CardPage(props: any) {
 
     return (!currentCard.name ? <div>wait a sec</div> :
       <div className="cardpage-main">
-        <img className="cardpage-card" src = {currentCard.images.large}/>
+        <div className="cardpage-card-div">
+          <img className="cardpage-card" src = {currentCard.images.large}/>
+        </div>
         <div className="cardpage-info">
             <div className="cardpage-name">{currentCard.name}</div>
             <div className="cardpage-header">{currentCard.supertype + " | " + currentCard.subtypes}</div>
-            <Grid container justifyContent="center" spacing={2} height="45vh">
+
+            <Grid container justifyContent="left" spacing={2} height="45vh">
                 {cardTypes.map((type, index) => { if (currentCard.tcgplayer.prices[type])
                   return (
                 <div>
                   <div className="cardpage-markettype">{cardTypeTitles[index]}</div>
-                  <Grid item className="results-grid-item" xs={12}>
+                  <Grid item className="cardpage-grid" xs={12}>
                       <div className="cardpage-description">Market: &nbsp;</div>
                       <div className="cardpage-normalprice">{"$ " + currentCard.tcgplayer.prices[type].market} &nbsp;</div>
                       <div className="cardpage-description">Low: &nbsp;</div>
@@ -51,6 +53,16 @@ function CardPage(props: any) {
                       <div className="cardpage-highprice">{"$ " + currentCard.tcgplayer.prices[type].high} &nbsp;</div>
                   </Grid>
                 </div>)})}
+                <div className="cardpage-extra-info">
+                  <div className="cardpage-markettype">Artist: &nbsp;</div>
+                  <div className="cardpage-description">{currentCard.artist} &nbsp;</div>
+                  <div className="cardpage-markettype">Rarity: &nbsp;</div>
+                  <div className="cardpage-description">{currentCard.rarity} &nbsp;</div>
+                  <div>
+                    <div className="cardpage-description">{"Set: "} &nbsp;</div>
+                    <img className="cardpage-setlogo" src={currentCard.set.images.logo}></img>
+                  </div>
+                </div>
             </Grid>
         </div>
       </div>

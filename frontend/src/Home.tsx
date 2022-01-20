@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
-import { getAllCards, findCardsByQuery, getOneSet } from './Pokemon';
+import { useEffect, useState, useCallback, useRef } from 'react';
+import { findCardsByQuery } from './Pokemon';
 import './App.scss';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { Input } from 'antd';
 import { useNavigate } from "react-router-dom";
-import { time } from 'console';
 
 function App() {
   const navigate = useNavigate();
@@ -12,14 +11,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [params, setParams] = useState({ q: "" })
   const ref = useRef(null);
-  const [timerID, setTimerID] = useState(setInterval(function() {
-    window.scrollBy({
-      top: 0,
-      left: 100,
-      behavior: 'smooth'
-    });
-  }, 10))
-
+  
   useEffect(() => {
     async function getData() {
       const data = await findCardsByQuery("name", "Charizard");
@@ -59,16 +51,12 @@ function App() {
     ref.current = node;            
   },[cards])
 
-  function mouseEnterScrollUpdate(e: any) {
-    //element scroll instead
-    window.scrollBy(10, 0);
-    console.log("mouseover");
-  }
+  // scroll with links?
 
   return (
     <div className="main">
-      <div className="home-mouseover-scroll-left-div" onMouseEnter={mouseEnterScrollUpdate}/>
-      <div className="home-mouseover-scroll-right-div" onMouseEnter={mouseEnterScrollUpdate}/>
+      <div className="home-mouseover-scroll-left-div" id="left-scroll"/>
+      <div className="home-mouseover-scroll-right-div" id="right-scroll"/>
       <div className="home-scroll-left-div">
         <div className="arrow">
           <span></span>

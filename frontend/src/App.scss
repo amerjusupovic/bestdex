@@ -294,7 +294,7 @@ $timeup: 0.35s;
 }
 
 .cardpage-name {
-    width: 60vw;
+    width: 40vw;
     font-size: 10vh;
     font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
@@ -302,6 +302,7 @@ $timeup: 0.35s;
 }
 
 .cardpage-header {
+    width: 40vw;
     font-size: 5vh;
     font-family: 'Roboto Slab', serif;
     margin-bottom: 10vh;
@@ -310,12 +311,29 @@ $timeup: 0.35s;
     font-weight: 200;
 }
 
+.cardpage-divider {
+    width: 40vw;
+    font-size: 3vh;
+    font-family: 'Bebas Neue', cursive;
+    white-space: nowrap;
+    background-color: white;
+    
+}
+
+.cardpage-grid {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
 .cardpage-description {
-    font-size: 4vh;
+    font-size: 3.5vh;
     font-family: 'Roboto Slab', serif;
     white-space: nowrap;
     color: white;
     font-weight: 200;
+    
 }
 
 .cardpage-markettype {
@@ -324,6 +342,11 @@ $timeup: 0.35s;
     white-space: nowrap;
     color: white;
     font-weight: bold;
+    text-align: left;
+}
+
+.cardpage-card-div {
+    width: 50vw;
 }
 
 .cardpage-card {
@@ -360,6 +383,15 @@ $timeup: 0.35s;
     white-space: nowrap;
     color: rgb(133, 194, 133);
     font-weight: 200;
+}
+
+.cardpage-setlogo {
+    width: 10vw;
+}
+
+.cardpage-extra-info {
+    width: 40vw;
+    display: flex;
 }
 
 // .cardpage-card:hover {
