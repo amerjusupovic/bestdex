@@ -60,6 +60,7 @@ function App() {
   },[cards])
 
   function mouseEnterScrollUpdate(e: any) {
+    //element scroll instead
     window.scrollBy(10, 0);
     console.log("mouseover");
   }
