@@ -4,6 +4,7 @@ import './App.scss';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { Input } from 'antd';
 import { useNavigate } from "react-router-dom";
+import { time } from 'console';
 
 function App() {
   const navigate = useNavigate();
@@ -11,6 +12,13 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [params, setParams] = useState({ q: "" })
   const ref = useRef(null);
+  const [timerID, setTimerID] = useState(setInterval(function() {
+    window.scrollBy({
+      top: 0,
+      left: 100,
+      behavior: 'smooth'
+    });
+  }, 10))
 
   useEffect(() => {
     async function getData() {
@@ -51,14 +59,16 @@ function App() {
     ref.current = node;            
   },[cards])
 
-  function mouseHoverUpdate(e: any) {
-    window.scrollBy(10, 0);
-    console.log("yo")
+  function mouseEnterScrollUpdate(e: any) {
+    setInterval(function() {
+      window.scrollBy(10, 0);
+    }, 100);
+    console.log("yo");
   }
 
   return (
     <div className="main">
-      <div className="home-mouseover-scroll-left-div" onMouseEnter={mouseHoverUpdate}/>
+      <div className="home-mouseover-scroll-left-div" onMouseEnter={mouseEnterScrollUpdate}/>
       <div className="home-mouseover-scroll-right-div"/>
       <div className="home-scroll-left-div">
         <div className="arrow">
