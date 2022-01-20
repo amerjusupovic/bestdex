@@ -60,16 +60,14 @@ function App() {
   },[cards])
 
   function mouseEnterScrollUpdate(e: any) {
-    setInterval(function() {
-      window.scrollBy(10, 0);
-    }, 100);
-    console.log("yo");
+    window.scrollBy(10, 0);
+    console.log("mouseover");
   }
 
   return (
     <div className="main">
       <div className="home-mouseover-scroll-left-div" onMouseEnter={mouseEnterScrollUpdate}/>
-      <div className="home-mouseover-scroll-right-div"/>
+      <div className="home-mouseover-scroll-right-div" onMouseEnter={mouseEnterScrollUpdate}/>
       <div className="home-scroll-left-div">
         <div className="arrow">
           <span></span>
