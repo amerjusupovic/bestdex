@@ -194,6 +194,37 @@ $backgroundcolor: #2c2d33;
     border-color: white;
 }
 
+.search-header-div {
+    width: 100%;
+    background-color: rgb(25, 24, 29);
+    height: 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.search-header-logo {
+    height: 2.5rem;
+    margin-left: 2vw;
+}
+
+.search-bar-header-title {
+    grid-area: 1 / 1;
+    font-size: 4.5vh;
+    margin-left: 1.5vw;
+    font-family: 'Bebas Neue', cursive;
+    white-space: nowrap;
+    text-align: center;
+    color: white;
+}
+
+.search-bar-header-scale {
+    transform: scale(0.6);
+}
+
+.search-bar-header-scale .ant-input{
+    font-size: 4vh;
+}
+
 .card-image {
     height: 90%;
     padding: 0 4% 0 4%;

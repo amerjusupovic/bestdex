@@ -5,11 +5,14 @@ import './App.scss';
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CardPage from "./CardPage";
+import { Input } from 'antd';
 
 function SearchResults(props: any) {
     const navigate = useNavigate();
     const [results, setResults] = useState([] as any);
     const [cardId, setCardId] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
+    const [params, setParams] = useState({ q: "" })
 
     useEffect(() => {
         async function getData() {
@@ -21,6 +24,19 @@ function SearchResults(props: any) {
         }
         getData();
       }, [])
+
+    useEffect(() => {
+      const getData = async () => {
+        try {
+          if (params.q) {
+            navigate("/search?q=" + params.q)
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      }
+      getData();
+    }, [params]);
 
     useEffect(() => {
       const setCurrentCard = async () => {
@@ -40,15 +56,32 @@ function SearchResults(props: any) {
       setCardId(e.target.id);
     }
 
+    function handleSearch(e: any) {
+      if (!e.key || e.key === "Enter") {
+        setParams({...params, q: searchQuery});
+      }
+    }
+  
+    function handleSearchInput(e: any) {
+      setSearchQuery(e.target.value)
+    }
+
     return (
-        <div className="results-main">
-          <div className="results-cards">
-            <Grid container justifyContent="center" spacing={1}>
-              {results.map((card: PokemonTCG.Card) =>
-                <Grid item className="results-grid-item" xs={3}>
-                  <img className="results-card-image" src={card.images.large} onClick={handleCardClick} id={card.id}/>
-                </Grid>)}
-            </Grid>
+        <div>
+          <div className="search-header-div">
+            <img src="charizard.png" className="search-header-logo"/>
+            <div className="search-bar-header-title">BESTDEX</div>
+            <Input.Search className="search-input search-bar-header-scale" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/>
+          </div>
+          <div className="results-main">
+            <div className="results-cards">
+              <Grid container justifyContent="center" spacing={1}>
+                {results.map((card: PokemonTCG.Card) =>
+                  <Grid item className="results-grid-item" xs={3}>
+                    <img className="results-card-image" src={card.images.large} onClick={handleCardClick} id={card.id}/>
+                  </Grid>)}
+              </Grid>
+            </div>
           </div>
         </div>
     );
