@@ -14,19 +14,20 @@ function SearchResults(props: any) {
     const [searchQuery, setSearchQuery] = useState("");
     const [params, setParams] = useState({ q: "" })
 
-    useEffect(() => {
-        async function getData() {
-          let url : string = window.location.href as string;
-          url = url.split("=").pop() || "";
-          const data = await findCardsByQuery("name", url);
-          setResults(data);
-          console.log(data);
-        }
-        getData();
-      }, [])
+    async function getData() {
+      let url : string = window.location.href as string;
+      url = url.split("=").pop() || "";
+      const data = await findCardsByQuery("name", url);
+      setResults(data);
+      console.log(data);
+    }
 
     useEffect(() => {
-      const getData = async () => {
+        getData();
+      }, [params])
+
+    useEffect(() => {
+      const navigateSearch = async () => {
         try {
           if (params.q) {
             navigate("/search?q=" + params.q)
@@ -35,6 +36,7 @@ function SearchResults(props: any) {
           console.error(err);
         }
       }
+      navigateSearch();
       getData();
     }, [params]);
 
@@ -66,12 +68,18 @@ function SearchResults(props: any) {
       setSearchQuery(e.target.value)
     }
 
+    function navigateHome(e: any) {
+      navigate("/");
+    }
+
     return (
         <div>
           <div className="search-header-div">
-            <img src="charizard.png" className="search-header-logo"/>
+            <img src="charizard.png" className="search-header-logo" onClick={navigateHome}/>
             <div className="search-bar-header-title">BESTDEX</div>
-            <Input.Search className="search-input search-bar-header-scale" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/>
+            <div className="search-bar-header-input">
+              <Input.Search className="search-input search-bar-header-scale" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/>
+            </div>
           </div>
           <div className="results-main">
             <div className="results-cards">

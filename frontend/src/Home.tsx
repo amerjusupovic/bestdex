@@ -55,8 +55,8 @@ function App() {
 
   return (
     <div className="main">
-      <div className="home-mouseover-scroll-left-div" id="left-scroll"/>
-      <div className="home-mouseover-scroll-right-div" id="right-scroll"/>
+      <div className="home-mouseover-scroll-div left-scroll" id="left-scroll"/>
+      <div className="home-mouseover-scroll-div right-scroll" id="right-scroll"/>
       <div className="home-scroll-left-div">
         <div className="arrow">
           <span></span>

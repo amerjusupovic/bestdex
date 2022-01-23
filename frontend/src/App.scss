@@ -58,34 +58,32 @@ $backgroundcolor: #2c2d33;
     z-index: 2;
     position: absolute;
     left: 2vw;
-    top: -1vh;
-    transform: rotate(90deg) scale(0.6);
+    top: -2vh;
+    transform: rotate(90deg) scale(0.5);
 }
 
 .home-scroll-right-div {
     z-index: 2;
     position: absolute;
     left: 95vw;
-    top: -4.5vh;
-    transform: rotate(270deg) scale(0.6);
+    top: -5.25vh;
+    transform: rotate(270deg) scale(0.5);
 }
 
-.home-mouseover-scroll-left-div {
+.home-mouseover-scroll-div {
     position: absolute;
     z-index: 3;
     top: 0;
+    height: 15vh;
+    width: 15vw;
+}
+
+.left-scroll {
     left: 0;
-    height: 15vh;
-    width: 15vw;
 }
 
-.home-mouseover-scroll-right-div {
-    position: absolute;
-    z-index: 3;
-    top: 0;
+.right-scroll {
     right: 0;
-    height: 15vh;
-    width: 15vw;
 }
 
 .arrow {
@@ -203,14 +201,21 @@ $backgroundcolor: #2c2d33;
 }
 
 .search-header-logo {
-    height: 2.5rem;
+    height: 2.3rem;
     margin-left: 2vw;
+    cursor: pointer;
+}
+
+.search-bar-header-input {
+    display: flex;
+    justify-content: center;
+    width: 78%;
 }
 
 .search-bar-header-title {
     grid-area: 1 / 1;
     font-size: 4.5vh;
-    margin-left: 1.5vw;
+    margin-left: 0.8vw;
     font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     text-align: center;
