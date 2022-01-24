@@ -32,7 +32,7 @@ function App() {
 			}
     }
     getData();
-  }, [params]);
+  }, [params, navigate]);
 
   function handleSearch(e: any) {
     if (!e.key || e.key === "Enter") {
@@ -49,7 +49,7 @@ function App() {
       node.scrollLeft = 20000;  // 700 ~= 1 card
     }
     ref.current = node;            
-  },[cards])
+  },[])
 
   // scroll with links?
 
@@ -72,7 +72,7 @@ function App() {
         </div>
       </div>
       <div ref={setRef} className="sliding-div">
-        {cards.map((card: PokemonTCG.Card) => <img className="card-image" src = {card.images.large}/>)}
+        {cards.map((card: PokemonTCG.Card) => <img className="card-image" src = {card.images.large} alt="card"/>)}
       </div>
       <div className= "title">Welcome to Bestdex</div>
       <div className="search-bar"><Input.Search className="search-input" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/></div>

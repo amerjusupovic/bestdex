@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getAllCards, findCardsByQuery, getOneSet } from './Pokemon';
+import { findCardsByQuery } from './Pokemon';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import './App.scss';
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import CardPage from "./CardPage";
+//import CardPage from "./CardPage";
 import { Input } from 'antd';
 
 function SearchResults(props: any) {
@@ -38,7 +38,7 @@ function SearchResults(props: any) {
       }
       navigateSearch();
       getData();
-    }, [params]);
+    }, [params, navigate]);
 
     useEffect(() => {
       const setCurrentCard = async () => {
@@ -52,7 +52,7 @@ function SearchResults(props: any) {
         }
       }
       setCurrentCard();
-    }, [cardId])
+    }, [cardId, navigate, props, results])
 
     function handleCardClick(e: any) {
       setCardId(e.target.id);
@@ -75,7 +75,7 @@ function SearchResults(props: any) {
     return (
         <div>
           <div className="search-header-div">
-            <img src="charizard.png" className="search-header-logo" onClick={navigateHome}/>
+            <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
             <div className="search-bar-header-title">BESTDEX</div>
             <div className="search-bar-header-input">
               <Input.Search className="search-input search-bar-header-scale" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/>
@@ -86,7 +86,7 @@ function SearchResults(props: any) {
               <Grid container justifyContent="center" spacing={1}>
                 {results.map((card: PokemonTCG.Card) =>
                   <Grid item className="results-grid-item" xs={3}>
-                    <img className="results-card-image" src={card.images.large} onClick={handleCardClick} id={card.id}/>
+                    <img className="results-card-image" src={card.images.large} onClick={handleCardClick} id={card.id} alt="card"/>
                   </Grid>)}
               </Grid>
             </div>

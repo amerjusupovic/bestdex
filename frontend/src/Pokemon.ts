@@ -1,5 +1,5 @@
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript'
-import React from 'react'
+//import React from 'react'
 const dotenv = require('dotenv');
 dotenv.config();
 
