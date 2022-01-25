@@ -431,8 +431,10 @@ $timeup: 0.35s;
 }
 
 .cardpage-extra-info {
-    width: 40vw;
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 // .cardpage-card:hover {
