@@ -5,11 +5,12 @@ import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { Input } from 'antd';
 import { useNavigate } from "react-router-dom";
 
-function App() {
+function Home(props: any) {
   const navigate = useNavigate();
   const [cards, setCards] = useState([] as any);
   const [searchQuery, setSearchQuery] = useState("");
   const [params, setParams] = useState({ q: "" })
+  const [cardId, setCardId] = useState("");
   const ref = useRef(null);
   
   useEffect(() => {
@@ -34,6 +35,20 @@ function App() {
     getData();
   }, [params, navigate]);
 
+  useEffect(() => {
+    const setCurrentCard = async () => {
+      try {
+        if (cardId) {
+          props.setSelectedCard(cards.find((val: any) => cardId === val.id))
+          navigate("/card?id=" + cardId)
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    setCurrentCard();
+  }, [cardId, navigate, props, cards])
+
   function handleSearch(e: any) {
     if (!e.key || e.key === "Enter") {
       setParams({...params, q: searchQuery});
@@ -50,6 +65,10 @@ function App() {
     }
     ref.current = node;            
   },[])
+
+  function handleCardClick(e: any) {
+    setCardId(e.target.id);
+  }
 
   // scroll with links?
 
@@ -72,7 +91,8 @@ function App() {
         </div>
       </div>
       <div ref={setRef} className="sliding-div">
-        {cards.map((card: PokemonTCG.Card) => <img className="card-image" src = {card.images.large} alt="card"/>)}
+        {cards.map((card: PokemonTCG.Card) => <img className="card-image" src = {card.images.large} alt="card" key={card.id}
+        onClick={handleCardClick} id={card.id}/>)}
       </div>
       <div className= "title">Welcome to Bestdex</div>
       <div className="search-bar"><Input.Search className="search-input" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/></div>
@@ -80,4 +100,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

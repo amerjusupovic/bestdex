@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route path="/" element = { <Home/> }/>
+          <Route path="/" element = { <Home setSelectedCard={setSelectedCard}/> }/>
           <Route path="/search" element = { <SearchResults setSelectedCard={setSelectedCard}/> }/>
           <Route path="/card" element = { <CardPage selectedCard={selectedCard}/> }/>
         </Routes>

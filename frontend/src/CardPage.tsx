@@ -35,12 +35,12 @@ function CardPage(props: any) {
         </div>
         <div className="cardpage-info">
             <div className="cardpage-name">{currentCard.name}</div>
-            <div className="cardpage-header">{currentCard.supertype + " | " + currentCard.subtypes}</div>
+            <div className="cardpage-header">{currentCard.supertype + " | " + currentCard.subtypes + " | " + currentCard.number}</div>
 
             <Grid container justifyContent="left" spacing={2} height="45vh">
                 {cardTypes.map((type, index) => { if (currentCard.tcgplayer.prices[type]) {
                   return (
-                <div>
+                <div key={index}>
                   <div className="cardpage-markettype">{cardTypeTitles[index]}</div>
                   <Grid item className="cardpage-grid" xs={12}>
                       <div className="cardpage-description">Market: &nbsp;</div>
@@ -58,10 +58,8 @@ function CardPage(props: any) {
                   <div className="cardpage-description">{currentCard.artist} &nbsp;</div>
                   <div className="cardpage-markettype">Rarity: &nbsp;</div>
                   <div className="cardpage-description">{currentCard.rarity} &nbsp;</div>
-                  <div>
-                    <div className="cardpage-description">{"Set: "} &nbsp;</div>
-                    <img className="cardpage-setlogo" src={currentCard.set.images.logo} alt="card set logo"></img>
-                  </div>
+                  <div className="cardpage-markettype">{"Set: "} &nbsp;</div>
+                  <img className="cardpage-setlogo" src={currentCard.set.images.logo} alt="card set logo"></img>
                 </div>
             </Grid>
         </div>

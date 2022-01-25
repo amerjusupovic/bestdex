@@ -85,7 +85,7 @@ function SearchResults(props: any) {
             <div className="results-cards">
               <Grid container justifyContent="center" spacing={1}>
                 {results.map((card: PokemonTCG.Card) =>
-                  <Grid item className="results-grid-item" xs={3}>
+                  <Grid item className="results-grid-item" xs={3} key={card.id}>
                     <img className="results-card-image" src={card.images.large} onClick={handleCardClick} id={card.id} alt="card"/>
                   </Grid>)}
               </Grid>
