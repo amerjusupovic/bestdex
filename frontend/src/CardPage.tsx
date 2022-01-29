@@ -37,29 +37,36 @@ function CardPage(props: any) {
             <div className="cardpage-name">{currentCard.name}</div>
             <div className="cardpage-header">{currentCard.supertype + " | " + currentCard.subtypes + " | " + currentCard.number}</div>
 
-            <Grid container justifyContent="left" spacing={2} height="45vh">
+            <Grid container justifyContent="center" spacing={2} height="45vh">
                 {cardTypes.map((type, index) => { if (currentCard.tcgplayer.prices[type]) {
                   return (
                 <div key={index}>
                   <div className="cardpage-markettype">{cardTypeTitles[index]}</div>
                   <Grid item className="cardpage-grid" xs={12}>
-                      <div className="cardpage-description">Market: &nbsp;</div>
-                      <div className="cardpage-normalprice">{"$ " + currentCard.tcgplayer.prices[type].market} &nbsp;</div>
-                      <div className="cardpage-description">Low: &nbsp;</div>
-                      <div className="cardpage-lowprice">{"$ " + currentCard.tcgplayer.prices[type].low} &nbsp;</div>
-                      <div className="cardpage-description">Mid: &nbsp;</div>
-                      <div className="cardpage-midprice">{"$ " + currentCard.tcgplayer.prices[type].mid} &nbsp;</div>
-                      <div className="cardpage-description">High: &nbsp;</div>
-                      <div className="cardpage-highprice">{"$ " + currentCard.tcgplayer.prices[type].high} &nbsp;</div>
+                      <div className="cardpage-description">Market: &nbsp;
+                        <div className="cardpage-normalprice">{"$ " + currentCard.tcgplayer.prices[type].market} &nbsp;</div>
+                      </div>
+                      <div className="cardpage-description">Low: &nbsp;
+                        <div className="cardpage-lowprice">{"$ " + currentCard.tcgplayer.prices[type].low} &nbsp;</div>
+                      </div>
+                      <div className="cardpage-description">Mid: &nbsp;
+                        <div className="cardpage-midprice">{"$ " + currentCard.tcgplayer.prices[type].mid} &nbsp;</div>
+                      </div>
+                      <div className="cardpage-description">High: &nbsp;
+                        <div className="cardpage-highprice">{"$ " + currentCard.tcgplayer.prices[type].high} &nbsp;</div>
+                      </div>
                   </Grid>
                 </div>)} else {return undefined}})}
                 <div className="cardpage-extra-info">
-                  <div className="cardpage-markettype">Artist: &nbsp;</div>
-                  <div className="cardpage-description">{currentCard.artist} &nbsp;</div>
-                  <div className="cardpage-markettype">Rarity: &nbsp;</div>
-                  <div className="cardpage-description">{currentCard.rarity} &nbsp;</div>
-                  <div className="cardpage-markettype">{"Set: "} &nbsp;</div>
-                  <img className="cardpage-setlogo" src={currentCard.set.images.logo} alt="card set logo"></img>
+                  <div className="cardpage-markettype extra-info">Artist: &nbsp;
+                    <div className="cardpage-description extra-info">{currentCard.artist} &nbsp;</div>
+                  </div>
+                  <div className="cardpage-markettype extra-info">Rarity: &nbsp;
+                    <div className="cardpage-description extra-info">{currentCard.rarity} &nbsp;</div>
+                  </div>
+                  <div className="cardpage-markettype extra-info">{"Set: "} &nbsp;
+                    <img className="cardpage-setlogo" src={currentCard.set.images.logo} alt="card set logo"></img>
+                  </div>
                 </div>
             </Grid>
         </div>
