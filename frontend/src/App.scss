@@ -345,7 +345,7 @@ $timeup: 0.35s;
 
 .cardpage-header {
     width: 100%;
-    font-size: calc(max(3vw, 2.5vh));
+    font-size: calc(max(3vw, 3.25vh));
     font-family: 'Roboto Slab', serif;
     margin-bottom: 8vh;
     white-space: nowrap;
@@ -370,7 +370,7 @@ $timeup: 0.35s;
 }
 
 .cardpage-description {
-    font-size: calc(max(2vw, 2.5vh));
+    font-size: calc(max(2vw, 3vh));
     font-family: 'Roboto Slab', serif;
     white-space: nowrap;
     color: white;
@@ -380,7 +380,7 @@ $timeup: 0.35s;
 }
 
 .cardpage-markettype {
-    font-size: calc(max(2vw, 2.5vh));
+    font-size: calc(max(2vw, 3vh));
     font-family: 'Roboto Slab', serif;
     white-space: nowrap;
     color: white;
@@ -402,7 +402,7 @@ $timeup: 0.35s;
 }
 
 .cardpage-normalprice {
-    font-size: calc(max(2.25vw, 2.75vh));
+    font-size: calc(max(2.25vw, 3.25vh));
     font-family: 'Roboto Slab', serif;
     white-space: nowrap;
     color: rgb(229, 229, 153);
@@ -410,7 +410,7 @@ $timeup: 0.35s;
 }
 
 .cardpage-lowprice {
-    font-size: calc(max(2.25vw, 2.75vh));
+    font-size: calc(max(2.25vw, 3.25vh));
     font-family: 'Roboto Slab', serif;
     white-space: nowrap;
     color: rgb(199, 120, 120);
@@ -418,7 +418,7 @@ $timeup: 0.35s;
 }
 
 .cardpage-midprice {
-    font-size: calc(max(2.25vw, 2.75vh));
+    font-size: calc(max(2.25vw, 3.25vh));
     font-family: 'Roboto Slab', serif;
     white-space: nowrap;
     color: rgb(139, 139, 218);
@@ -426,7 +426,7 @@ $timeup: 0.35s;
 }
 
 .cardpage-highprice {
-    font-size: calc(max(2.25vw, 2.75vh));
+    font-size: calc(max(2.25vw, 3.25vh));
     font-family: 'Roboto Slab', serif;
     white-space: nowrap;
     color: rgb(133, 194, 133);
