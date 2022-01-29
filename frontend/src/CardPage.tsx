@@ -40,7 +40,7 @@ function CardPage(props: any) {
             <Grid container justifyContent="center" spacing={2} height="45vh">
                 {cardTypes.map((type, index) => { if (currentCard.tcgplayer.prices[type]) {
                   return (
-                <div key={index}>
+                <div className="cardpage-marketinfo-div" key={index}>
                   <div className="cardpage-markettype">{cardTypeTitles[index]}</div>
                   <Grid item className="cardpage-grid" xs={12}>
                       <div className="cardpage-description">Market: &nbsp;
