@@ -47,7 +47,7 @@ $backgroundcolor: #2c2d33;
     margin-top: 45vh;
     margin-left: 22.5vw;
     width: 55vw;
-    font-size: calc(max(8vw, 8vh));
+    font-size: calc(max(8vw, 7vh));
     font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     //-webkit-text-stroke: 2px black;
@@ -321,6 +321,7 @@ $timeup: 0.35s;
     justify-content: center;
     height: 100vh;
     flex-wrap: wrap;
+    overflow-x: hidden;
     width: 100vw;
 }
 
