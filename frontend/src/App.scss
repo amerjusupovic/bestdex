@@ -178,7 +178,6 @@ $backgroundcolor: #2c2d33;
 }
 
 .search-input .ant-input-group-addon {
-    height: 110%;
     width: 10%;
     border-radius: 15px !important;
 }
@@ -330,7 +329,6 @@ $timeup: 0.35s;
     margin-top: 6vh;
     padding-left: 4vw;
     padding-right: 4vw;
-    padding-bottom: 8vh;
     display: grid;
     justify-content: center;
 }
@@ -344,11 +342,12 @@ $timeup: 0.35s;
 }
 
 .cardpage-header {
-    width: 100%;
+    min-width: 80vw;
+    max-width: 100%;
     font-size: calc(max(3vw, 3.25vh));
     font-family: 'Roboto Slab', serif;
     margin-bottom: 8vh;
-    white-space: nowrap;
+    white-space: wrap;
     color: white;
     font-weight: 200;
 }
@@ -444,6 +443,7 @@ $timeup: 0.35s;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-bottom: 5vh;
 }
 
 .extra-info {
