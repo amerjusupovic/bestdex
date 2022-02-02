@@ -319,7 +319,7 @@ $timeup: 0.35s;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: vh;
     flex-wrap: wrap;
     overflow-x: hidden;
     width: 100vw;
@@ -327,11 +327,15 @@ $timeup: 0.35s;
 
 .cardpage-info {
     width: 60vw;
-    margin-top: 6vh;
+    margin-top: 3vh;
     padding-left: 4vw;
     padding-right: 4vw;
     display: grid;
     justify-content: center;
+}
+
+.cardpage-outside {
+    overflow-x: hidden;
 }
 
 .cardpage-name {
@@ -346,7 +350,7 @@ $timeup: 0.35s;
     min-width: 80vw;
     max-width: 100%;
     font-size: calc(max(3vw, 3.25vh));
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Bebas Neue', cursive;
     margin-bottom: 8vh;
     white-space: wrap;
     color: white;
@@ -359,19 +363,18 @@ $timeup: 0.35s;
     font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     background-color: white;
-    
 }
 
 .cardpage-grid {
-    justify-content: center;
+    justify-content: left;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .cardpage-description {
-    font-size: calc(max(2vw, 3vh));
-    font-family: 'Roboto Slab', serif;
+    font-size: calc(max(3vw, 3vh));
+    font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     color: white;
     font-weight: 200;
@@ -380,20 +383,24 @@ $timeup: 0.35s;
 }
 
 .cardpage-markettype {
-    font-size: calc(max(2vw, 3vh));
-    font-family: 'Roboto Slab', serif;
+    font-size: calc(max(3vw, 3vh));
+    font-family: 'Bebas Neue', cursive;
+    text-decoration: underline;
     white-space: nowrap;
     color: white;
-    font-weight: bold;
     text-align: left;
     align-items: center;
+    display: flex;
+}
+
+.cardpage-market-pair {
     display: flex;
 }
 
 .cardpage-card-div {
     width: 35vw;
     min-width: 60vh;
-    margin-top: 6vh;
+    margin-top: 4vh;
 }
 
 .cardpage-card {
@@ -402,32 +409,32 @@ $timeup: 0.35s;
 }
 
 .cardpage-normalprice {
-    font-size: calc(max(2.25vw, 3.25vh));
-    font-family: 'Roboto Slab', serif;
+    font-size: calc(max(3vw, 3.25vh));
+    font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     color: rgb(229, 229, 153);
     font-weight: 200;
 }
 
 .cardpage-lowprice {
-    font-size: calc(max(2.25vw, 3.25vh));
-    font-family: 'Roboto Slab', serif;
+    font-size: calc(max(3vw, 3.25vh));
+    font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     color: rgb(199, 120, 120);
     font-weight: 200;
 }
 
 .cardpage-midprice {
-    font-size: calc(max(2.25vw, 3.25vh));
-    font-family: 'Roboto Slab', serif;
+    font-size: calc(max(3vw, 3.25vh));
+    font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     color: rgb(139, 139, 218);
     font-weight: 200;
 }
 
 .cardpage-highprice {
-    font-size: calc(max(2.25vw, 3.25vh));
-    font-family: 'Roboto Slab', serif;
+    font-size: calc(max(3vw, 3.25vh));
+    font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     color: rgb(133, 194, 133);
     font-weight: 200;
@@ -437,14 +444,16 @@ $timeup: 0.35s;
     height: 8vh;
     display: flex;
     align-items: flex-start;
+    padding-left: 1.2vw;
 }
 
 .cardpage-extra-info {
     width: 100%;
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     padding-bottom: 5vh;
+    padding-left: 15vw;
 }
 
 .extra-info {
@@ -454,6 +463,9 @@ $timeup: 0.35s;
 
 .cardpage-marketinfo-div {
     padding-bottom: 3vh;
+    justify-content: left;
+    padding-left: 15vw;
+    display: grid;
 }
 
 // .cardpage-card:hover {

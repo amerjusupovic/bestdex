@@ -60,11 +60,11 @@ function Home(props: any) {
   }
 
   const setRef = useCallback((node) => {
-    if (node) {
-      node.scrollLeft = 20000;  // 700 ~= 1 card
+    if (node && cards) {
+      node.scrollLeft = 20900;  // 700 ~= 1 card
     }
     ref.current = node;            
-  },[])
+  },[cards])
 
   function handleCardClick(e: any) {
     setCardId(e.target.id);

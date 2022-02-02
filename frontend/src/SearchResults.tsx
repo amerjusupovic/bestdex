@@ -4,14 +4,12 @@ import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import './App.scss';
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-//import CardPage from "./CardPage";
-import { Input } from 'antd';
+import SearchBar from "./SearchBar";
 
 function SearchResults(props: any) {
     const navigate = useNavigate();
     const [results, setResults] = useState([] as any);
     const [cardId, setCardId] = useState("");
-    const [searchQuery, setSearchQuery] = useState("");
     const [params, setParams] = useState({ q: "" })
 
     async function getData() {
@@ -58,16 +56,6 @@ function SearchResults(props: any) {
       setCardId(e.target.id);
     }
 
-    function handleSearch(e: any) {
-      if (!e.key || e.key === "Enter") {
-        setParams({...params, q: searchQuery});
-      }
-    }
-  
-    function handleSearchInput(e: any) {
-      setSearchQuery(e.target.value)
-    }
-
     function navigateHome(e: any) {
       navigate("/");
     }
@@ -77,9 +65,7 @@ function SearchResults(props: any) {
           <div className="search-header-div">
             <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
             <div className="search-bar-header-title">BESTDEX</div>
-            <div className="search-bar-header-input">
-              <Input.Search className="search-input search-bar-header-scale" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/>
-            </div>
+            <SearchBar setParams={setParams}/>
           </div>
           <div className="results-main">
             <div className="results-cards">

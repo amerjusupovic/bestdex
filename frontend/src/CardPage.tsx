@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { findCardById } from './Pokemon';
 import './App.scss';
 import { Grid } from "@mui/material";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import SearchBar from './SearchBar';
 
 function CardPage(props: any) {
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
     const [currentCard, setCurrentCard] = useState(props.selectedCard)
     const cardTypes = ["normal", "holofoil", "reverseHolofoil", "1stEditionHolofoil", "unlimitedHolofoil"];
     const cardTypeTitles = ["Normal", "Holofoil", "Reverse Holofoil", "1st Edition Holo Foil", "Unlimited Holofoil"];
@@ -28,7 +29,17 @@ function CardPage(props: any) {
       }
     }, [props, currentCard.name])
 
+    function navigateHome(e: any) {
+      navigate("/");
+    }
+
     return (!currentCard.name ? <div>wait a sec</div> :
+      <div className="cardpage-outside">
+          <div className="search-header-div">
+            <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
+            <div className="search-bar-header-title">BESTDEX</div>
+            <SearchBar/>
+          </div>
       <div className="cardpage-main">
         <div className="cardpage-card-div">
           <img className="cardpage-card" src = {currentCard.images.large} alt="card"/>
@@ -36,8 +47,7 @@ function CardPage(props: any) {
         <div className="cardpage-info">
             <div className="cardpage-name">{currentCard.name}</div>
             <div className="cardpage-header">{currentCard.supertype + " | " + currentCard.subtypes + " | " + currentCard.number}</div>
-
-            <Grid container justifyContent="center" spacing={2} height="45vh">
+            <Grid container justifyContent="left" spacing={2} height="45vh">
                 {cardTypes.map((type, index) => { if (currentCard.tcgplayer.prices[type]) {
                   return (
                 <div className="cardpage-marketinfo-div" key={index}>
@@ -58,18 +68,21 @@ function CardPage(props: any) {
                   </Grid>
                 </div>)} else {return undefined}})}
                 <div className="cardpage-extra-info">
-                  <div className="cardpage-markettype extra-info">Artist: &nbsp;
-                    <div className="cardpage-description extra-info">{currentCard.artist} &nbsp;</div>
+                  <div className="cardpage-market-pair">
+                    <div className="cardpage-markettype extra-info">Artist:</div>
+                    <div className="cardpage-description extra-info">&nbsp; &nbsp;{currentCard.artist} &nbsp;</div>
                   </div>
-                  <div className="cardpage-markettype extra-info">Rarity: &nbsp;
-                    <div className="cardpage-description extra-info">{currentCard.rarity} &nbsp;</div>
+                  <div className="cardpage-market-pair">
+                    <div className="cardpage-markettype extra-info">Rarity:</div>
+                    <div className="cardpage-description extra-info">&nbsp; &nbsp;{currentCard.rarity} &nbsp;</div>
                   </div>
-                  <div className="cardpage-markettype extra-info">{"Set: "} &nbsp;
+                  <div className="cardpage-markettype extra-info">Set:
                     <img className="cardpage-setlogo" src={currentCard.set.images.logo} alt="card set logo"></img>
                   </div>
                 </div>
             </Grid>
         </div>
+      </div>
       </div>
     );
   }
