@@ -12,6 +12,7 @@ function Home(props: any) {
   const [params, setParams] = useState({ q: "" })
   const [cardId, setCardId] = useState("");
   const ref = useRef(null);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
   
   useEffect(() => {
     async function getData() {
@@ -32,6 +33,7 @@ function Home(props: any) {
 				console.error(err);
 			}
     }
+    setImagesLoaded(0);
     getData();
   }, [params, navigate]);
 
@@ -92,7 +94,8 @@ function Home(props: any) {
       </div>
       <div ref={setRef} className="sliding-div">
         {cards.map((card: PokemonTCG.Card) => <img className="card-image" src = {card.images.large} alt="card" key={card.id}
-        onClick={handleCardClick} id={card.id}/>)}
+        onClick={handleCardClick} id={card.id} style={imagesLoaded >= cards.length - 1 ? {} : {display: 'none' }}
+        onLoad={() => setImagesLoaded(imagesLoaded + 1)}/>)}
       </div>
       <div className= "title">Welcome to Bestdex</div>
       <div className="search-bar"><Input.Search className="search-input" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/></div>

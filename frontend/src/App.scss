@@ -45,13 +45,14 @@ $backgroundcolor: #2c2d33;
     z-index: 1;
     position: absolute;
     margin-top: 45vh;
-    margin-left: 22.5vw;
-    width: 55vw;
+    margin-left: 2.5vw;
+    width: 95vw;
     font-size: calc(max(8vw, 7vh));
     font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     //-webkit-text-stroke: 2px black;
     text-shadow: 4px 4px 10px black;
+    overflow-x: hidden;
 }
 
 .home-scroll-left-div {
@@ -65,7 +66,7 @@ $backgroundcolor: #2c2d33;
 .home-scroll-right-div {
     z-index: 2;
     position: absolute;
-    left: 95vw;
+    right: 2vw;
     top: -5.25vh;
     transform: rotate(270deg) scale(0.5);
 }
@@ -178,7 +179,7 @@ $backgroundcolor: #2c2d33;
 }
 
 .search-input .ant-input-group-addon {
-    width: 10%;
+    width: calc(max(5vw, 10vh));
     border-radius: 15px !important;
 }
 
@@ -213,7 +214,7 @@ $backgroundcolor: #2c2d33;
 
 .search-bar-header-title {
     grid-area: 1 / 1;
-    font-size: 4.5vh;
+    font-size: 2.5rem;
     margin-left: 0.8vw;
     font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
@@ -223,6 +224,7 @@ $backgroundcolor: #2c2d33;
 
 .search-bar-header-scale {
     transform: scale(0.6);
+    height: 4.5rem;
 }
 
 .search-bar-header-scale .ant-input{
@@ -250,6 +252,20 @@ $backgroundcolor: #2c2d33;
     grid-area: 1 / 1;
 }
 
+.results-spinner {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.loading {
+    margin-top: 35vh;
+}
+
+.done {
+    display: none;
+}
+
 .results-cards {
     padding-top: 5vh;
     justify-content: right;
@@ -268,6 +284,7 @@ body {
     position: absolute;
     text-align: center; 
     background-color: $backgroundcolor;
+    overflow-x: hidden;
 }
 
 $timeshow: 0.05s;
@@ -319,7 +336,7 @@ $timeup: 0.35s;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: vh;
+    height: 92vh;
     flex-wrap: wrap;
     overflow-x: hidden;
     width: 100vw;
