@@ -1,5 +1,4 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { findCardsByQuery } from './Pokemon';
 import './App.scss';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { Input } from 'antd';
@@ -16,7 +15,8 @@ function Home(props: any) {
   
   useEffect(() => {
     async function getData() {
-      const data = await findCardsByQuery("name", "Charizard");
+      // const data = await findCardsByQuery("name", "Charizard");
+      var data = require('./charizards.json');
       data.sort(() => (Math.random() > .5) ? 1 : -1)
       setCards(data);
     }
