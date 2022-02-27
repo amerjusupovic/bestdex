@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { Input } from 'antd';
@@ -10,7 +10,7 @@ function Home(props: any) {
   const [searchQuery, setSearchQuery] = useState("");
   const [params, setParams] = useState({ q: "" })
   const [cardId, setCardId] = useState("");
-  const ref = useRef(null);
+  // const ref = useRef(null);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   
   useEffect(() => {
@@ -61,18 +61,20 @@ function Home(props: any) {
     setSearchQuery(e.target.value)
   }
 
-  const setRef = useCallback((node) => {
-    if (node && cards) {
-      node.scrollLeft = 20900;  // 700 ~= 1 card
-    }
-    ref.current = node;            
-  },[cards])
+  // const setRef = useCallback((node) => {
+  //   if (node && cards) {
+  //     node.scrollLeft = 20900;  // 700 ~= 1 card
+  //   }
+  //   ref.current = node;            
+  // },[cards])
 
   function handleCardClick(e: any) {
     setCardId(e.target.id);
   }
 
-  // scroll with links?
+  // function scrollToBottom() {
+  //   ref.scrollIntoView({ behavior: "smooth" });
+  // }
 
   return (
     <div className="main">
@@ -92,7 +94,7 @@ function Home(props: any) {
           <span></span>
         </div>
       </div>
-      <div ref={setRef} className="sliding-div">
+      <div className="sliding-div">
         {cards.map((card: PokemonTCG.Card) => <img className="card-image" src = {card.images.large} alt="card" key={card.id}
         onClick={handleCardClick} id={card.id} style={imagesLoaded >= cards.length - 1 ? {} : {display: 'none' }}
         onLoad={() => setImagesLoaded(imagesLoaded + 1)}/>)}

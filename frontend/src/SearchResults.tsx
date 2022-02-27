@@ -16,7 +16,9 @@ function SearchResults(props: any) {
 
     async function getData() {
       let url : string = window.location.href as string;
-      url = url.split("=").pop() || "";
+      url = url.split("q=").pop() || "";
+      // url = url.replaceAll("%20", " ") || "";
+      console.log(url);
       const data = await findCardsByQuery("name", url);
       setResults(data);
       console.log(data);

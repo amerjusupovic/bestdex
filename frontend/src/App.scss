@@ -159,23 +159,23 @@ $backgroundcolor: #2c2d33;
 
 .search-input input {
     width: 85%;
-    height: 100%;
     border-radius: 15px;
 }
 
 .search-input .ant-input {
     font-size: 3vh;
+    height: 10vh;
+    align-items: stretch;
     padding-left: 4vh;
     font-family: 'Bebas Neue', cursive;
 }
 
-.search-input .ant-input-wrapper  {
-    height: 100%;
+.search-input button {
+    width: 100%;
 }
 
-.search-input button {
-    height: 100%;
-    width: 100%;
+.search-input .ant-btn {
+    height: 10vh;
 }
 
 .search-input .ant-input-group-addon {
@@ -224,7 +224,7 @@ $backgroundcolor: #2c2d33;
 
 .search-bar-header-scale {
     transform: scale(0.6);
-    height: 4.5rem;
+    height: 5.4rem;
 }
 
 .search-bar-header-scale .ant-input{
