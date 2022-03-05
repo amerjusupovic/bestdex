@@ -192,6 +192,24 @@ $backgroundcolor: #2c2d33;
     border-color: white;
 }
 
+.login-icon{
+    cursor: pointer;
+    height: 3.25rem !important;
+    width: 3.25rem !important;
+}
+
+.icon-home{
+    z-index: 2;
+    position: absolute;
+    right: 1vw;
+    bottom: 1vh;
+    height: 4rem !important;
+    width: 5rem !important;
+    background-color: white;
+    color: $backgroundcolor;
+    border-radius: 15px;
+}
+
 .search-header-div {
     width: 100%;
     background-color: rgb(25, 24, 29);
@@ -204,6 +222,13 @@ $backgroundcolor: #2c2d33;
     height: 2.3rem;
     margin-left: 2vw;
     cursor: pointer;
+}
+
+.search-header-login-div {
+    flex-grow: 100;
+    justify-content: right;
+    display: flex;
+    margin-right: 1.5vw;
 }
 
 .search-bar-header-input {

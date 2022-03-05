@@ -3,6 +3,7 @@ import './App.scss';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { Input } from 'antd';
 import { useNavigate } from "react-router-dom";
+import PersonIcon from '@mui/icons-material/Person';
 
 function Home(props: any) {
   const navigate = useNavigate();
@@ -72,6 +73,10 @@ function Home(props: any) {
     setCardId(e.target.id);
   }
 
+  function navigateLogin(e: any) {
+    navigate("/login");
+  }
+
   // function scrollToBottom() {
   //   ref.scrollIntoView({ behavior: "smooth" });
   // }
@@ -101,6 +106,7 @@ function Home(props: any) {
       </div>
       <div className= "title">Welcome to Bestdex</div>
       <div className="search-bar"><Input.Search className="search-input" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/></div>
+      <PersonIcon className="login-icon icon-home" onClick={navigateLogin}/>
     </div>
   );
 }

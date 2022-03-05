@@ -4,6 +4,7 @@ import './App.scss';
 import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import SearchBar from './SearchBar';
+import PersonIcon from '@mui/icons-material/Person';
 
 function CardPage(props: any) {
     const navigate = useNavigate();
@@ -33,12 +34,17 @@ function CardPage(props: any) {
       navigate("/");
     }
 
+    function navigateLogin(e: any) {
+      navigate("/login");
+    }
+
     return (!currentCard.name ? <div>wait a sec</div> :
       <div className="cardpage-outside">
           <div className="search-header-div">
             <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
             <div className="search-bar-header-title">BESTDEX</div>
             <SearchBar/>
+            <div className="search-header-login-div"><PersonIcon className="login-icon" onClick={navigateLogin} htmlColor={"white"}/></div>
           </div>
       <div className="cardpage-main">
         <div className="cardpage-card-div">

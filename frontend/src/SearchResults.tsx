@@ -6,6 +6,7 @@ import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { SwapSpinner } from "react-spinners-kit";
+import PersonIcon from '@mui/icons-material/Person';
 
 function SearchResults(props: any) {
     const navigate = useNavigate();
@@ -65,12 +66,17 @@ function SearchResults(props: any) {
       navigate("/");
     }
 
+    function navigateLogin(e: any) {
+      navigate("/login");
+    }
+
     return (
         <div>
           <div className="search-header-div">
             <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
             <div className="search-bar-header-title">BESTDEX</div>
             <SearchBar setParams={setParams}/>
+            <div className="search-header-login-div"><PersonIcon className="login-icon" onClick={navigateLogin} htmlColor={"white"}/></div>
           </div>
           <div className={"results-spinner " + (imagesLoaded < results.length ? "loading" : "done")}>
               <SwapSpinner color="#ffffff" loading={imagesLoaded < results.length}/>
