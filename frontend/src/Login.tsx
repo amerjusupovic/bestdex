@@ -73,7 +73,7 @@ function Login() {
         navigate("/login");
     }
 
-    return (user !== {} ? 
+    return (user.uid ? 
         <div>
             <div className="search-header-div">
                 <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
