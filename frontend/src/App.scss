@@ -198,6 +198,10 @@ $backgroundcolor: #2c2d33;
     width: 3.25rem !important;
 }
 
+.login-button {
+    margin-top: 10vh;
+}
+
 .icon-home{
     z-index: 2;
     position: absolute;
@@ -229,15 +233,20 @@ $backgroundcolor: #2c2d33;
     justify-content: right;
     display: flex;
     margin-right: 1.5vw;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.2rem;
+    align-items: center;
+    color: white;
 }
 
 .search-bar-header-input {
     display: flex;
     justify-content: center;
-    width: 78%;
+    width: 50%;
+    margin-left: 14%;
 }
 
-.search-bar-header-title {
+.search-header-title {
     grid-area: 1 / 1;
     font-size: 2.5rem;
     margin-left: 0.8vw;

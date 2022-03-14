@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
 import { findCardById } from './Pokemon';
 import './App.scss';
 import { Grid } from "@mui/material";
@@ -11,6 +13,27 @@ function CardPage(props: any) {
     const [currentCard, setCurrentCard] = useState(props.selectedCard)
     const cardTypes = ["normal", "holofoil", "reverseHolofoil", "1stEditionHolofoil", "unlimitedHolofoil"];
     const cardTypeTitles = ["Normal", "Holofoil", "Reverse Holofoil", "1st Edition Holo Foil", "Unlimited Holofoil"];
+    const [user, setUser] = useState({} as any);
+
+    initializeApp({
+        // credential: admin.credential.cert(serviceAccount),
+        apiKey: "AIzaSyCKZTsZtOCASVEWGXofVBmbXvD8wCIaZEk",
+        authDomain: "bestdex.firebaseapp.com",
+        projectId: "bestdex",
+        storageBucket: "bestdex.appspot.com",
+        messagingSenderId: "657273505324",
+        appId: "1:657273505324:web:0e99d42cedb8b5762df389",
+        measurementId: "G-Z8WVPTR9XG"
+    });
+    
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setUser(user);
+        } else {
+          // User is signed out
+        }
+    });
 
     useEffect(() => {
       async function getData() {
@@ -42,9 +65,9 @@ function CardPage(props: any) {
       <div className="cardpage-outside">
           <div className="search-header-div">
             <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
-            <div className="search-bar-header-title">BESTDEX</div>
+            <div className="search-header-title">BESTDEX</div>
             <SearchBar/>
-            <div className="search-header-login-div"><PersonIcon className="login-icon" onClick={navigateLogin} htmlColor={"white"}/></div>
+            <div className="search-header-login-div">{user.displayName}&nbsp;<PersonIcon className="login-icon" onClick={navigateLogin} htmlColor={"white"}/></div>
           </div>
       <div className="cardpage-main">
         <div className="cardpage-card-div">

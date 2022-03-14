@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
 import { findCardsByQuery } from './Pokemon';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import './App.scss';
@@ -14,6 +16,27 @@ function SearchResults(props: any) {
     const [cardId, setCardId] = useState("");
     const [params, setParams] = useState({ q: "" })
     const [imagesLoaded, setImagesLoaded] = useState(0);
+    const [user, setUser] = useState({} as any);
+
+    initializeApp({
+        // credential: admin.credential.cert(serviceAccount),
+        apiKey: "AIzaSyCKZTsZtOCASVEWGXofVBmbXvD8wCIaZEk",
+        authDomain: "bestdex.firebaseapp.com",
+        projectId: "bestdex",
+        storageBucket: "bestdex.appspot.com",
+        messagingSenderId: "657273505324",
+        appId: "1:657273505324:web:0e99d42cedb8b5762df389",
+        measurementId: "G-Z8WVPTR9XG"
+    });
+    
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setUser(user);
+        } else {
+          // User is signed out
+        }
+    });
 
     async function getData() {
       let url : string = window.location.href as string;
@@ -74,9 +97,9 @@ function SearchResults(props: any) {
         <div>
           <div className="search-header-div">
             <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
-            <div className="search-bar-header-title">BESTDEX</div>
+            <div className="search-header-title">BESTDEX</div>
             <SearchBar setParams={setParams}/>
-            <div className="search-header-login-div"><PersonIcon className="login-icon" onClick={navigateLogin} htmlColor={"white"}/></div>
+            <div className="search-header-login-div">{user.displayName}&nbsp;<PersonIcon className="login-icon" onClick={navigateLogin} htmlColor={"white"}/></div>
           </div>
           <div className={"results-spinner " + (imagesLoaded < results.length ? "loading" : "done")}>
               <SwapSpinner color="#ffffff" loading={imagesLoaded < results.length}/>
