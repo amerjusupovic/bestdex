@@ -151,10 +151,17 @@ $backgroundcolor: #2c2d33;
 }
 
 .search-input {
-    width: 55vw;
-    height: 10vh;
     border-radius: 15px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.815);
+}
+
+.search-home-scale {
+    width: 55vw;
+    height: 10vh;
+}
+
+.search-home-scale .ant-input {
+    height: 10vh;
 }
 
 .search-input input {
@@ -164,7 +171,6 @@ $backgroundcolor: #2c2d33;
 
 .search-input .ant-input {
     font-size: 3vh;
-    height: 10vh;
     align-items: stretch;
     padding-left: 4vh;
     font-family: 'Bebas Neue', cursive;
@@ -174,12 +180,19 @@ $backgroundcolor: #2c2d33;
     width: 100%;
 }
 
-.search-input .ant-btn {
+.search-home-scale .ant-btn {
     height: 10vh;
 }
 
-.search-input .ant-input-group-addon {
+.search-home-scale .ant-input {
+    height: 10vh;
+}
+
+.search-home-scale .ant-input-group-addon {
     width: calc(max(5vw, 10vh));
+}
+
+.search-input .ant-input-group-addon {
     border-radius: 15px !important;
 }
 
@@ -214,12 +227,66 @@ $backgroundcolor: #2c2d33;
     border-radius: 15px;
 }
 
+.icon-cardpage{
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    bottom: 1vh;
+    width: 4rem !important;
+}
+
+$timeshow: 0.05s;
+$timeup: 0.35s;
+
+// .fav:hover{
+//     -webkit-animation: scaleUp $timeup  $timeshow ease-out forwards; 
+//     -moz-animation:    scaleUp $timeup  $timeshow ease-out forwards; 
+//     -o-animation:      scaleUp $timeup  $timeshow ease-out forwards; 
+//     animation:         scaleUp $timeup  $timeshow ease-out forwards;  
+// }
+
+// .fav{
+//     right: 1vw;
+// }
+
+.fav {
+    right: 0.5rem;
+    height: 5rem !important;
+    background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    transition: background-position 1s steps(28);
+    transition-duration: 0s;
+    position: absolute;
+    background-position: -20px -10px;
+    transform: scale(1.3);
+}
+
+.is-active {
+    transition-duration: 1s;
+    background-position: -2820px -10px;
+}
+
+.add:hover{
+    -webkit-animation: scaleUp $timeup  $timeshow ease-out forwards; 
+    -moz-animation:    scaleUp $timeup  $timeshow ease-out forwards; 
+    -o-animation:      scaleUp $timeup  $timeshow ease-out forwards; 
+    animation:         scaleUp $timeup  $timeshow ease-out forwards;  
+}
+
+.add{
+    right: 4.5rem;
+    height: 3rem !important;
+    bottom: 1.5rem;
+}
+
 .search-header-div {
     width: 100%;
     background-color: rgb(25, 24, 29);
     height: 4rem;
     display: flex;
     align-items: center;
+    border-bottom: 0.4px solid rgb(94, 94, 94);
 }
 
 .search-header-logo {
@@ -242,8 +309,8 @@ $backgroundcolor: #2c2d33;
 .search-bar-header-input {
     display: flex;
     justify-content: center;
-    width: 50%;
-    margin-left: 14%;
+    width: 80vw;
+    align-items: center;
 }
 
 .search-header-title {
@@ -257,13 +324,27 @@ $backgroundcolor: #2c2d33;
 }
 
 .search-bar-header-scale {
-    transform: scale(0.6);
-    height: 5.4rem;
+    width: calc(min(90%, 45vw));
+    height: 3rem;
 }
 
-.search-bar-header-scale .ant-input{
-    font-size: 4vh;
+.search-bar-header-scale .ant-input {
+    font-size: 2.2vh;
+    height: 3rem;
 }
+
+.search-bar-header-scale .ant-btn {
+    height: 3rem;
+}
+
+.search-bar-header-scale .ant-input-group-wrapper {
+    height: 3rem;
+}
+
+.search-bar-header-scale .ant-input-group-addon {
+    width: calc(max(5vw, 5vh));
+}
+
 
 .card-image {
     max-height: 90vh;
@@ -321,8 +402,7 @@ body {
     overflow-x: hidden;
 }
 
-$timeshow: 0.05s;
-$timeup: 0.35s;
+
 .results-card-image:hover {
     -webkit-animation: scaleUp $timeup  $timeshow ease-out forwards; 
     -moz-animation:    scaleUp $timeup  $timeshow ease-out forwards; 

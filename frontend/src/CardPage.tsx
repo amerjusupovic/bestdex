@@ -7,6 +7,7 @@ import { Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import SearchBar from './SearchBar';
 import PersonIcon from '@mui/icons-material/Person';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 function CardPage(props: any) {
     const navigate = useNavigate();
@@ -14,6 +15,8 @@ function CardPage(props: any) {
     const cardTypes = ["normal", "holofoil", "reverseHolofoil", "1stEditionHolofoil", "unlimitedHolofoil"];
     const cardTypeTitles = ["Normal", "Holofoil", "Reverse Holofoil", "1st Edition Holo Foil", "Unlimited Holofoil"];
     const [user, setUser] = useState({} as any);
+    const [favorite, setFavorite] = useState(false);
+    const [added, addedCard] = useState(false);
 
     initializeApp({
         // credential: admin.credential.cert(serviceAccount),
@@ -61,11 +64,18 @@ function CardPage(props: any) {
       navigate("/login");
     }
 
+    function addFav(e: any) {
+      setFavorite(!favorite);
+    }
+
+    function addCard(e: any) {
+      addedCard(!added);
+    }
+
     return (!currentCard.name ? <div>wait a sec</div> :
       <div className="cardpage-outside">
           <div className="search-header-div">
             <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
-            <div className="search-header-title">BESTDEX</div>
             <SearchBar/>
             <div className="search-header-login-div">{user.displayName}&nbsp;<PersonIcon className="login-icon" onClick={navigateLogin} htmlColor={"white"}/></div>
           </div>
@@ -74,7 +84,10 @@ function CardPage(props: any) {
           <img className="cardpage-card" src = {currentCard.images.large} alt="card"/>
         </div>
         <div className="cardpage-info">
-            <div className="cardpage-name">{currentCard.name}</div>
+          <div className="cardpage-name">{currentCard.name}</div>
+            { /*<FavoriteIcon className="icon-cardpage fav" onClick={addFav} sx={favorite ? {color: "red"} : {color: "white"}} /> */ }
+            <div className={"icon-cardpage fav" + (favorite ? " is-active" : "")} onClick={addFav} />
+            <AddCircleIcon className="icon-cardpage add" onClick={addCard} sx={added ? {color: "lightGreen"} : {color: "white"}}/>
             <div className="cardpage-header">{currentCard.supertype + " | " + currentCard.subtypes + " | " + currentCard.number}</div>
             <Grid container justifyContent="left" spacing={2} height="45vh">
                 {cardTypes.map((type, index) => { if (currentCard.tcgplayer.prices[type]) {

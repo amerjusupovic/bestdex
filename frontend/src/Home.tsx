@@ -105,7 +105,7 @@ function Home(props: any) {
         onLoad={() => setImagesLoaded(imagesLoaded + 1)}/>)}
       </div>
       <div className= "title">Welcome to Bestdex</div>
-      <div className="search-bar"><Input.Search className="search-input" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/></div>
+      <div className="search-bar"><Input.Search className="search-input search-home-scale" placeholder="SEARCH FOR A CARD" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/></div>
       <PersonIcon className="login-icon icon-home" onClick={navigateLogin}/>
     </div>
   );
