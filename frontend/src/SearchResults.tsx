@@ -97,7 +97,6 @@ function SearchResults(props: any) {
         <div>
           <div className="search-header-div">
             <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
-            <div className="search-header-title">BESTDEX</div>
             <SearchBar setParams={setParams}/>
             <div className="search-header-login-div">{user.displayName}&nbsp;<PersonIcon className="login-icon" onClick={navigateLogin} htmlColor={"white"}/></div>
           </div>
@@ -107,11 +106,11 @@ function SearchResults(props: any) {
           <div className="results-main">
             <div className="results-cards">
               <Grid container justifyContent="center" wrap="wrap" spacing={1}>
-                {results.map((card: PokemonTCG.Card) =>
+                {results.length > 0 ? results.map((card: PokemonTCG.Card) =>
                   <Grid item className="results-grid-item" wrap="wrap" key={card.id}>
                     <img className="results-card-image" src={card.images.large} onClick={handleCardClick} id={card.id} alt="card" style={imagesLoaded >= results.length - 1 ? {} : {display: 'none' }}
                     onLoad={() => setImagesLoaded(imagesLoaded + 1)}/>
-                  </Grid>)}
+                  </Grid>) : <div className="cardpage-name">No Results Found :(</div>}
               </Grid>
             </div>
           </div>

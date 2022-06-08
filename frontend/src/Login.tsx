@@ -1,15 +1,21 @@
 import { getAuth, getRedirectResult, GoogleAuthProvider, signInWithRedirect, onAuthStateChanged } from "firebase/auth"; //signOut
-import { Button } from 'antd';
+import { Button, Divider } from 'antd';
 import { initializeApp } from 'firebase/app';
+// import { getFirestore } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from "react-router-dom";
+import GridViewIcon from '@mui/icons-material/GridView';
+import ViewListIcon from '@mui/icons-material/ViewList';
 import SearchBar from "./SearchBar";
+// import { findCardById } from './Pokemon';
 
 function Login() {
     const navigate = useNavigate();
     const [user, setUser] = useState({} as any);
     const [params, setParams] = useState({ q: "" })
+    const [viewType, setViewType] = useState("grid")
+    // const [cards, setCards] = useState([] as any);
 
     const provider = new GoogleAuthProvider();
     initializeApp({
@@ -22,6 +28,8 @@ function Login() {
         appId: "1:657273505324:web:0e99d42cedb8b5762df389",
         measurementId: "G-Z8WVPTR9XG"
     });
+
+    // const db = getFirestore();
     
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
@@ -65,6 +73,11 @@ function Login() {
         });
     }
 
+    useEffect(() => {
+        // let cardData = [] as any
+        // setCards(cardData)
+      }, [user])
+
     function navigateHome(e: any) {
         navigate("/");
     }
@@ -73,14 +86,34 @@ function Login() {
         navigate("/login");
     }
 
+    function clickGridViewType(e: any) {
+        setViewType("grid");
+    }
+
+    function clickListViewType(e: any) {
+        setViewType("list");
+    }
+
     return (user.uid ? 
         <div>
             <div className="search-header-div">
                 <img src="charizard.png" className="search-header-logo" onClick={navigateHome} alt="charizard"/>
-                <div className="search-header-title">BESTDEX</div>
                 <SearchBar setParams={setParams}/>
                 <div onClick={navigateLogin} className="search-header-login-div">{user.displayName}&nbsp;<PersonIcon className="login-icon" onClick={navigateLogin} htmlColor={"white"}/></div>
             </div>
+            <div className="login-main">
+                <div className="login-view-button-div"><div className="login-view-header">{viewType} view</div></div>
+                <div className="login-view-button-div">
+                    <Button value="grid" className={(viewType === "grid" ? "login-view-button-pressed" : "login-view-button") + " login-svg-scale"}
+                        icon={<GridViewIcon sx={viewType === "grid" ? {color: "black"} : {color: "white"}}/>}
+                        onClick={clickGridViewType}></Button>
+                    <Button value="list" className={(viewType === "list" ? "login-view-button-pressed" : "login-view-button") + " login-svg-scale"} 
+                        icon={<ViewListIcon sx={viewType === "list" ? {color: "black"} : {color: "white"}}/>}
+                        onClick={clickListViewType}></Button>
+                </div>
+                <Divider style={{borderTop: "1px solid white"}}/>
+
+            </div>  
         </div> : 
         <Button className="login-button" type="primary" onClick={handleGoogleLoginClick}>Login with Google</Button>
     );

@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import SearchBar from './SearchBar';
 import PersonIcon from '@mui/icons-material/Person';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Tooltip } from 'antd';
 
 function CardPage(props: any) {
     const navigate = useNavigate();
@@ -85,9 +87,13 @@ function CardPage(props: any) {
         </div>
         <div className="cardpage-info">
           <div className="cardpage-name">{currentCard.name}</div>
-            { /*<FavoriteIcon className="icon-cardpage fav" onClick={addFav} sx={favorite ? {color: "red"} : {color: "white"}} /> */ }
-            <div className={"icon-cardpage fav" + (favorite ? " is-active" : "")} onClick={addFav} />
-            <AddCircleIcon className="icon-cardpage add" onClick={addCard} sx={added ? {color: "lightGreen"} : {color: "white"}}/>
+            <Tooltip placement="top" title={"I want this card!"}>
+              <FavoriteIcon className="icon-cardpage fav" onClick={addFav} sx={favorite ? {color: "red"} : {color: "white"}} />
+            </Tooltip>
+            { /* <div className={"icon-cardpage fav" + (favorite ? " is-active" : "")} onClick={addFav} /> */ }
+            <Tooltip placement="top" title={"I have this card!"}>
+              <AddCircleIcon className="icon-cardpage add" onClick={addCard} sx={added ? {color: "lightGreen"} : {color: "white"}}/>
+            </Tooltip>
             <div className="cardpage-header">{currentCard.supertype + " | " + currentCard.subtypes + " | " + currentCard.number}</div>
             <Grid container justifyContent="left" spacing={2} height="45vh">
                 {cardTypes.map((type, index) => { if (currentCard.tcgplayer.prices[type]) {
