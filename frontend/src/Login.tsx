@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import GridViewIcon from '@mui/icons-material/GridView';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import SearchBar from "./SearchBar";
+import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
+import { Grid } from "@mui/material";
 // import { findCardById } from './Pokemon';
 
 function Login() {
@@ -15,7 +17,8 @@ function Login() {
     const [user, setUser] = useState({} as any);
     const [params, setParams] = useState({ q: "" })
     const [viewType, setViewType] = useState("grid")
-    // const [cards, setCards] = useState([] as any);
+    const [ownedCards, setOwnedCards] = useState([] as any);
+    const [imagesLoaded, setImagesLoaded] = useState(0);
 
     const provider = new GoogleAuthProvider();
     initializeApp({
@@ -74,8 +77,9 @@ function Login() {
     }
 
     useEffect(() => {
-        // let cardData = [] as any
-        // setCards(cardData)
+        let cardData = [] as any
+        // set cardData to owned cards by this user
+        setOwnedCards(cardData)
       }, [user])
 
     function navigateHome(e: any) {
@@ -92,6 +96,18 @@ function Login() {
 
     function clickListViewType(e: any) {
         setViewType("list");
+    }
+
+    // function clickFavoriteCards(e: any) {
+
+    // }
+
+    // function clickAddedCards(e: any) {
+
+    // }
+
+    function handleCardClick(e: any) {
+
     }
 
     return (user.uid ? 
@@ -112,7 +128,17 @@ function Login() {
                         onClick={clickListViewType}></Button>
                 </div>
                 <Divider style={{borderTop: "1px solid white"}}/>
-
+                <div className="results-main">
+                    <div className="results-cards">
+                    <Grid container justifyContent="center" wrap="wrap" spacing={1}>
+                        {ownedCards.length > 0 ? ownedCards.map((card: PokemonTCG.Card) =>
+                        <Grid item className="results-grid-item" wrap="wrap" key={card.id}>
+                            <img className="results-card-image" src={card.images.large} onClick={handleCardClick} id={card.id} alt="card" style={imagesLoaded >= ownedCards.length - 1 ? {} : {display: 'none' }}
+                            onLoad={() => setImagesLoaded(imagesLoaded + 1)}/>
+                        </Grid>) : <div className="cardpage-name">No Added Cards</div>}
+                    </Grid>
+                    </div>
+                </div>
             </div>  
         </div> : 
         <Button className="login-button" type="primary" onClick={handleGoogleLoginClick}>Login with Google</Button>
